@@ -1,0 +1,22 @@
+@using AirlinePlanner.Models
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+
+<h2>Flight List</h2>
+
+    <ul>
+        @foreach(JoinTableClass flight in @Model)
+        {
+            <li>@flight.GetCityOne() to @flight.GetCityTwo() - Departure Time: @flight.GetTime()</li>
+        }
+    </ul>
+
+
+
+    <a href="/">Back to home</a> <br>
+    <a href="/flight/newcity">Add new cities</a> <br>
+    <a href="/flight/newflight">Add new flights</a>
+</div>

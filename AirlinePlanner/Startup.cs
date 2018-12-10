@@ -44,3 +44,4 @@ namespace AirlinePlanner
         public static string ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=airline_planner;";
     }
 }
+                    

@@ -9,7 +9,8 @@ namespace AirlinePlanner.Controllers
         [HttpGet("/")]
         public ActionResult Index()
         {
-            return View();
+            List<CityClass> cityList = CityClass.GetAll();
+            return View(cityList);
         }
     }
 }

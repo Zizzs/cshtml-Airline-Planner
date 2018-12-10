@@ -43,13 +43,12 @@ namespace AirlinePlanner.Controllers
             return RedirectToAction("NewFlight");
         }
 
-        [HttpGet("/flight/flights")]
-        public ActionResult ShowFlights()
+        [HttpPost("/flight/search")]
+        public ActionResult ShowFlights(int cityOneId)
         {
-            List<FlightClass> allFlights = FlightClass.GetAll();
-            return View();
+            List<JoinTableClass> totalFlightInfo = JoinTableClass.GetJoinTable(cityOneId);
+            return View("ShowFlights", totalFlightInfo);           
         }
-
 
     }
 }
