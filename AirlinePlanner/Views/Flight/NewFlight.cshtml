@@ -1,0 +1,53 @@
+@using AirlinePlanner.Models
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+<h3>Add new flight</h3>
+
+
+ <form action="/flight/newflight" method="post">
+    <div class="col col-md-3">
+        <label for="departureTime">Departure Time:</label>
+        <input class="form-control" id="departureTime" name="departureTime" type="datetime-local" required><br>
+    </div>  
+    <div class="col col-md-3">
+        <label for="status">Status:</label>
+        <select class="form-control" id="status" name="status" type="text" required>
+            <option value="On Time">On Time</option>
+            <option value="Delayed">Delayed</option>
+            <option value="Cancelled">Cancelled</option>
+            <option value="Complete">Complete</option>
+        </select>
+    </div>  
+    <div class="col col-md-3">
+        <label for="cityOne">Departure City:</label>
+        <select class="form-control" id="cityOne" name="cityOne" type="text" required>
+            @foreach(CityClass city in @Model["cities"])
+            {
+                <option value="@city.GetId()">@city.GetCity()</option>
+            }
+        </select>
+    </div>  
+    <div class="col col-md-3">
+        <label for="cityTwo">Arrival City:</label>
+        <select class="form-control" id="cityTwo" name="cityTwo" type="text" required>
+            @foreach(CityClass city in @Model["cities"])
+            {
+                <option value="@city.GetId()">@city.GetCity()</option>
+            }
+        </select>
+    </div>  
+
+    
+    <br>
+    <button class="btn btn-primary btn-lg" type="submit">Add</button>
+</form>
+
+
+
+<a href="/">Back to home</a>
+<a href="/flight/new">Add new cities</a>
+<a href="/flights/new">Add new flights</a>
+</div>
