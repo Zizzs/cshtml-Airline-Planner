@@ -39,6 +39,7 @@ namespace AirlinePlanner.Controllers
             flight.FlightSave();
             List<FlightClass> flights = FlightClass.GetAll();
             int flightId = flight.GetId();
+            // int flightId = flights[0].GetId();
             // this /\ was grabbing the first flight in the list every time and setting all entries to 1
             JoinTableClass.SaveToJoinTable(cityOne, cityTwo, flightId);
             return RedirectToAction("NewFlight");
