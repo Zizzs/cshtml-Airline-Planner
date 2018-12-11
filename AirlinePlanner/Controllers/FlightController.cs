@@ -26,7 +26,7 @@ namespace AirlinePlanner.Controllers
         {
             List<CityClass> allCities = CityClass.GetAll();
             List<FlightClass> allFlights = FlightClass.GetAll();
-            Dictionary<string, object> model = new Dictionary<string, object>{};
+            Dictionary<string, object> model = new Dictionary<string, object> { };
             model.Add("cities", allCities);
             model.Add("flights", allFlights);
             return View(model);
@@ -38,7 +38,9 @@ namespace AirlinePlanner.Controllers
             FlightClass flight = new FlightClass(departureTime, status);
             flight.FlightSave();
             List<FlightClass> flights = FlightClass.GetAll();
-            int flightId = flights[0].GetId();
+            int flightId = flight.GetId();
+            // int flightId = flights[0].GetId();
+            // this /\ was grabbing the first flight in the list every time and setting all entries to 1
             JoinTableClass.SaveToJoinTable(cityOne, cityTwo, flightId);
             return RedirectToAction("NewFlight");
         }
@@ -47,7 +49,7 @@ namespace AirlinePlanner.Controllers
         public ActionResult ShowFlights(int cityOneId)
         {
             List<JoinTableClass> totalFlightInfo = JoinTableClass.GetJoinTable(cityOneId);
-            return View("ShowFlights", totalFlightInfo);           
+            return View("ShowFlights", totalFlightInfo);
         }
 
     }
